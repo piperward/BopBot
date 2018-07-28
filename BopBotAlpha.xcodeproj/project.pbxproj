@@ -15,6 +15,7 @@
 		8618524B21017E56005997AD /* ArtistSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618524721017E56005997AD /* ArtistSearchViewController.swift */; };
 		8618524C21017E56005997AD /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618524821017E56005997AD /* SearchTableViewCell.swift */; };
 		8618524D21017E56005997AD /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618524921017E56005997AD /* ArtistDetailViewController.swift */; };
+		861B6A4D210CEB4A00EC052F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861B6A4C210CEB4A00EC052F /* ProfileViewController.swift */; };
 		866B533D2109EBB0000C058E /* ArtistFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866B533C2109EBB0000C058E /* ArtistFeedViewController.swift */; };
 		866B53422109FB19000C058E /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866B53412109FB19000C058E /* AlbumTableViewCell.swift */; };
 		867FA6FB21091CE900D8A096 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FA6FA21091CE900D8A096 /* Track.swift */; };
@@ -34,6 +35,7 @@
 		8618524721017E56005997AD /* ArtistSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistSearchViewController.swift; sourceTree = "<group>"; };
 		8618524821017E56005997AD /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		8618524921017E56005997AD /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
+		861B6A4C210CEB4A00EC052F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		866B533C2109EBB0000C058E /* ArtistFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistFeedViewController.swift; sourceTree = "<group>"; };
 		866B53412109FB19000C058E /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		867FA6FA21091CE900D8A096 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				8618524921017E56005997AD /* ArtistDetailViewController.swift */,
 				8618524721017E56005997AD /* ArtistSearchViewController.swift */,
 				866B533C2109EBB0000C058E /* ArtistFeedViewController.swift */,
+				861B6A4C210CEB4A00EC052F /* ProfileViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				866B53422109FB19000C058E /* AlbumTableViewCell.swift in Sources */,
 				867FA6FB21091CE900D8A096 /* Track.swift in Sources */,
 				8618524D21017E56005997AD /* ArtistDetailViewController.swift in Sources */,
+				861B6A4D210CEB4A00EC052F /* ProfileViewController.swift in Sources */,
 				86ABB426210953D100658F21 /* HeaderArtistCollectionReusableView.swift in Sources */,
 				86ABB42821096D2A00658F21 /* User.swift in Sources */,
 				8618524B21017E56005997AD /* ArtistSearchViewController.swift in Sources */,

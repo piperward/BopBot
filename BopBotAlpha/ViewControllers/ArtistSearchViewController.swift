@@ -71,7 +71,7 @@ extension ArtistSearchViewController: UISearchBarDelegate {
     }
 }
 
-extension ArtistSearchViewController: UITableViewDataSource {
+extension ArtistSearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return artistNames.count
     }
@@ -93,8 +93,4 @@ extension ArtistSearchViewController: UITableViewDataSource {
             destination.tracks = self.tracks
         }
     }
-}
-
-extension ArtistSearchViewController: UITableViewDelegate {
-    
 }
