@@ -434,13 +434,6 @@
                                     <constraint firstItem="Plt-Gz-M6k" firstAttribute="centerY" secondItem="qKV-1N-kf4" secondAttribute="centerY" id="sHG-OU-Gmn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gu-J9-wfq">
-                                <rect key="frame" x="0.0" y="299" width="375" height="1"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="YcT-Ca-2lr"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9B-9h-9FS">
                                 <rect key="frame" x="0.0" y="213" width="375" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -448,29 +441,28 @@
                                     <constraint firstAttribute="height" constant="1" id="SrL-CS-QSs"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XVB-jF-9yr">
-                                <rect key="frame" x="0.0" y="299" width="375" height="319"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvC-PH-5sV">
+                                <rect key="frame" x="0.0" y="307" width="375" height="1"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1A6-MK-5MO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XVB-jF-9yr" firstAttribute="top" secondItem="qKV-1N-kf4" secondAttribute="bottom" id="4Sb-CV-hSn"/>
+                            <constraint firstItem="JvC-PH-5sV" firstAttribute="leading" secondItem="DQv-pF-mLi" secondAttribute="leading" id="1i9-F6-f1E"/>
                             <constraint firstItem="N9B-9h-9FS" firstAttribute="leading" secondItem="DQv-pF-mLi" secondAttribute="leading" id="678-5w-Llh"/>
-                            <constraint firstItem="6gu-J9-wfq" firstAttribute="leading" secondItem="DQv-pF-mLi" secondAttribute="leading" id="FNn-j5-74v"/>
                             <constraint firstItem="qKV-1N-kf4" firstAttribute="trailing" secondItem="xzb-Hj-mn9" secondAttribute="trailing" id="HHH-2e-DId"/>
+                            <constraint firstItem="JvC-PH-5sV" firstAttribute="top" secondItem="qKV-1N-kf4" secondAttribute="bottom" constant="8" id="J0d-cT-9gw"/>
                             <constraint firstItem="9EV-cq-YkP" firstAttribute="leading" secondItem="xzb-Hj-mn9" secondAttribute="leading" id="O6w-3h-Q0l"/>
                             <constraint firstAttribute="trailing" secondItem="N9B-9h-9FS" secondAttribute="trailing" id="Oe8-d5-LVc"/>
                             <constraint firstItem="9EV-cq-YkP" firstAttribute="trailing" secondItem="xzb-Hj-mn9" secondAttribute="trailing" id="Ufz-nG-ipX"/>
-                            <constraint firstAttribute="trailing" secondItem="6gu-J9-wfq" secondAttribute="trailing" id="btA-kd-49b"/>
                             <constraint firstItem="qKV-1N-kf4" firstAttribute="top" secondItem="N9B-9h-9FS" secondAttribute="bottom" id="d2z-cL-cZC"/>
-                            <constraint firstItem="XVB-jF-9yr" firstAttribute="leading" secondItem="xzb-Hj-mn9" secondAttribute="leading" id="dZn-PH-E92"/>
                             <constraint firstItem="qKV-1N-kf4" firstAttribute="leading" secondItem="xzb-Hj-mn9" secondAttribute="leading" id="fCS-an-PJI"/>
-                            <constraint firstItem="XVB-jF-9yr" firstAttribute="bottom" secondItem="xzb-Hj-mn9" secondAttribute="bottom" id="hqU-kF-iY1"/>
                             <constraint firstItem="9EV-cq-YkP" firstAttribute="top" secondItem="xzb-Hj-mn9" secondAttribute="top" id="jro-2z-djm"/>
-                            <constraint firstItem="XVB-jF-9yr" firstAttribute="trailing" secondItem="xzb-Hj-mn9" secondAttribute="trailing" id="lsJ-cU-62o"/>
                             <constraint firstItem="qKV-1N-kf4" firstAttribute="top" secondItem="9EV-cq-YkP" secondAttribute="bottom" id="mWP-go-Sdw"/>
-                            <constraint firstItem="6gu-J9-wfq" firstAttribute="top" secondItem="qKV-1N-kf4" secondAttribute="bottom" id="uji-XD-VUx"/>
+                            <constraint firstAttribute="trailing" secondItem="JvC-PH-5sV" secondAttribute="trailing" id="v3w-WA-Fiz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xzb-Hj-mn9"/>
                     </view>
@@ -481,7 +473,6 @@
                         <outlet property="followerCountLabel" destination="gDH-3K-8Ii" id="33E-UK-pLv"/>
                         <outlet property="followingCountLabel" destination="cPH-Id-Dzw" id="iZO-CY-S5e"/>
                         <outlet property="profileImage" destination="Vdx-HM-5VF" id="Lnw-dn-OO6"/>
-                        <outlet property="tableView" destination="XVB-jF-9yr" id="B29-mD-fau"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uR8-CP-Tbj" userLabel="First Responder" sceneMemberID="firstResponder"/>
