@@ -32,6 +32,7 @@ class ArtistDetailViewController: UIViewController {
         }
         
         artist = Artist(artistName: artistName, collections: collections)
+        self.title = artistName
     }
 
     override func didReceiveMemoryWarning() {

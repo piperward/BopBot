@@ -20,6 +20,8 @@ class ArtistFeedViewController: UIViewController {
         tableView.delegate = self
         
         data = User.getArtists()
+        
+        self.title = "My Feed"
     }
     
     override func viewWillAppear(_ animated: Bool) {

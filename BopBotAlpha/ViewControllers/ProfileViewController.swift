@@ -16,6 +16,8 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    fileprivate var data: [Artist] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,11 +31,26 @@ class ProfileViewController: UIViewController {
         editProfileButton.layer.cornerRadius = 5
         editProfileButton.layer.borderWidth = 1
         editProfileButton.layer.borderColor = UIColor.gray.cgColor
+        
+        editProfileButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        data = User.getArtists()
+        tableView.reloadData()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        self.title = "My Profile"
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        data = User.getArtists()
+        tableView.reloadData()
     }
     
 
@@ -49,6 +66,17 @@ class ProfileViewController: UIViewController {
 
 }
 
-//extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
-//    
-//}
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "followCell", for: indexPath)
+        let artist = data[indexPath.row]
+        
+        cell.textLabel?.text = artist.artistName
+        
+        return cell
+    }
+}

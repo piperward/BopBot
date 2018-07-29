@@ -13,14 +13,12 @@ protocol HeaderArtistCollectionReusableViewDelegate {
 }
 
 class HeaderArtistCollectionReusableView: UICollectionReusableView {
-    @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     
     var delegate: HeaderArtistCollectionReusableViewDelegate?
     
     var artist: Artist? {
         didSet {
-            artistNameLabel.text = artist?.artistName
             updateStateFollowButton()
         }
     }

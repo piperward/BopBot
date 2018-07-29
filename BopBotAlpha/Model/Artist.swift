@@ -19,7 +19,9 @@ struct Artist {
             self.tracksFromSeparateCollections = tracks
             self.collectionNames = []
             for track in tracks! {
-                collectionNames?.append(track.collectionName!)
+                if let collectionName = track.collectionName {
+                    collectionNames?.append(collectionName)
+                }
             }
         }
         else {

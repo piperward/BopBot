@@ -23,6 +23,8 @@ class ArtistSearchViewController: UIViewController {
         searchBar.delegate = self
         
         tableView.reloadData()
+        
+        self.title = "Search"
     }
     
     override func didReceiveMemoryWarning() {
