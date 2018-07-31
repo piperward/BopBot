@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        followingCountLabel.text = "\(data.count)"
         data = User.getArtists()
         tableView.reloadData()
     }

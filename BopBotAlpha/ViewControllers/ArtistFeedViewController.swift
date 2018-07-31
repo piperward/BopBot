@@ -60,7 +60,8 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
             cell.albumNameLabel.text = latestRelease.collectionName
             cell.artistNameLabel.text = latestRelease.artistName
             
-            let formatter = ISO8601DateFormatter()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
             cell.dateLabel.text = formatter.string(from: latestRelease.releaseDate!)
             
             if let artworkUrl = latestRelease.artworkUrl100 {
