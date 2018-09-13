@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4DCBE0771EA71272E99C3B7D /* Pods_BopBotAlpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A346DA501372098E4D09CB3 /* Pods_BopBotAlpha.framework */; };
 		860B952E211675BF00A29696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 860B952D211675BE00A29696 /* GoogleService-Info.plist */; };
+		86175DD4214A280400497E19 /* FirebaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86175DD3214A280400497E19 /* FirebaseApi.swift */; };
 		8618523321017D87005997AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618523221017D87005997AD /* AppDelegate.swift */; };
 		8618523A21017D87005997AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8618523821017D87005997AD /* Main.storyboard */; };
 		8618523C21017D8A005997AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8618523B21017D8A005997AD /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		3EF1EAACB90120D0F8F0F560 /* Pods-BopBotAlpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBotAlpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha.debug.xcconfig"; sourceTree = "<group>"; };
 		860B952D211675BE00A29696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		86175DD3214A280400497E19 /* FirebaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseApi.swift; sourceTree = "<group>"; };
 		8618522F21017D87005997AD /* BopBotAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BopBotAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8618523221017D87005997AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8618523921017D87005997AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				866B53402109F52C000C058E /* Views */,
 				8618523221017D87005997AD /* AppDelegate.swift */,
 				86ABB42721096D2A00658F21 /* User.swift */,
+				86175DD3214A280400497E19 /* FirebaseApi.swift */,
 				8618523821017D87005997AD /* Main.storyboard */,
 				8618523B21017D8A005997AD /* Assets.xcassets */,
 				8618523D21017D8A005997AD /* LaunchScreen.storyboard */,
@@ -280,6 +283,7 @@
 				8618524B21017E56005997AD /* ArtistSearchViewController.swift in Sources */,
 				86ABB42A2109738E00658F21 /* Artist.swift in Sources */,
 				866B533D2109EBB0000C058E /* ArtistFeedViewController.swift in Sources */,
+				86175DD4214A280400497E19 /* FirebaseApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

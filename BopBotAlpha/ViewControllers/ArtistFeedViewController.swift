@@ -21,27 +21,9 @@ class ArtistFeedViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        User.ref.observeSingleEvent(of: .value, with: {snapshot in
-            let groupKeys = snapshot.children.compactMap { $0 as? DataSnapshot }.map { $0.key }
-            
-            //This group will keep track of the number of locks still pending
-            let group = DispatchGroup()
-            var newArtists: [CodableArtist] = []
-
-            for groupKey in groupKeys {
-                group.enter()
-                User.ref.child(groupKey).observeSingleEvent(of: .value, with: { snapshot in
-                    if let artist = CodableArtist(snapshot: snapshot) {
-                        newArtists.append(artist)
-                    }
-                    group.leave()
-                })
-            }
-            
-            group.notify(queue: .main) {
-                self.updateAlbums(artists: newArtists)
-            }
-        })
+        Api.observeFollowingArtists() { (artists) in
+            self.updateAlbums(artists: artists)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

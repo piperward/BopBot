@@ -34,8 +34,10 @@ class ProfileViewController: UIViewController {
         
         editProfileButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
-        data = User.getArtists()
-        tableView.reloadData()
+        Api.observeFollowingNames() { (artistNames) in
+            self.data = artistNames
+            self.tableView.reloadData()
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,7 +52,6 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         followingCountLabel.text = "\(data.count)"
-        data = User.getArtists()
         tableView.reloadData()
     }
     

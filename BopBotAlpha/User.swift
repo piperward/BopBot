@@ -10,7 +10,6 @@ import Foundation
 import Firebase
 
 class User {
-    static let ref = Database.database().reference(withPath: "following")
     static fileprivate var following: [String: Artist] = [:]
     
    static func follow(_ artist: Artist) {
@@ -31,7 +30,7 @@ class User {
                     
                     DispatchQueue.main.sync {
                         let artist = searchData.results[0]
-                        let artistRef = self.ref.child(artist.artistName.lowercased())
+                        let artistRef = Api.followingRef.child(artist.artistName.lowercased())
                         
                         artistRef.setValue(artist.toAnyObject())
                     }
@@ -45,7 +44,7 @@ class User {
     static func unfollow(_ artist: Artist) {
         following.removeValue(forKey: artist.artistName)
         
-        let artistRef = self.ref.child(artist.artistName.lowercased())
+        let artistRef = Api.followingRef.child(artist.artistName.lowercased())
         artistRef.removeValue()
     }
     
