@@ -7,26 +7,45 @@
 //
 
 import UIKit
+import Firebase
 
 class ArtistFeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate var data: [Artist] = []
+    fileprivate var data: [CodableArtist] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "My Feed"
         tableView.dataSource = self
         tableView.delegate = self
         
-        data = User.getArtists()
-        
-        self.title = "My Feed"
+        User.ref.observeSingleEvent(of: .value, with: {snapshot in
+            let groupKeys = snapshot.children.compactMap { $0 as? DataSnapshot }.map { $0.key }
+            
+            //This group will keep track of the number of locks still pending
+            let group = DispatchGroup()
+            var newArtists: [CodableArtist] = []
+
+            for groupKey in groupKeys {
+                group.enter()
+                User.ref.child(groupKey).observeSingleEvent(of: .value, with: { snapshot in
+                    if let artist = CodableArtist(snapshot: snapshot) {
+                        newArtists.append(artist)
+                    }
+                    group.leave()
+                })
+            }
+            
+            group.notify(queue: .main) {
+                self.updateAlbums(artists: newArtists)
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        data = User.getArtists()
-        tableView.reloadData()
+        //
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,14 +74,25 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         let artist = data[indexPath.row]
-        
-        if let latestRelease: Track = artist.latestRelease() {
+        if let latestRelease: Album = artist.latestRelease() {
             cell.albumNameLabel.text = latestRelease.collectionName
             cell.artistNameLabel.text = latestRelease.artistName
+            let releaseDate = latestRelease.releaseDate
             
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            cell.dateLabel.text = formatter.string(from: latestRelease.releaseDate!)
+            //DateFormatter used to properly display release date
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "MMM dd, yyyy"
+            if releaseDate != nil {
+                if let date = dateFormatterGet.date(from: releaseDate!){
+                    cell.dateLabel.text = dateFormatterPrint.string(from: date)
+                }
+                else {
+                    print("There was an error decoding the string")
+                }
+            }
             
             if let artworkUrl = latestRelease.artworkUrl100 {
                 if let imageUrl = URL(string: artworkUrl) {
@@ -80,5 +110,41 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
 
         
         return cell
+    }
+}
+
+extension ArtistFeedViewController {
+    fileprivate func updateAlbums(artists: [CodableArtist]) {
+        for artist in artists {
+            var a = artist
+            
+            guard let lookUpUrl = URL(string: "https://itunes.apple.com/lookup?amgArtistId=" + "\(a.amgArtistId)" + "&entity=album") else { return }
+            
+            URLSession.shared.dataTask(with: lookUpUrl) { (data, response, error)
+                in
+                
+                guard let data = data else { return }
+                do {
+                    let decoder = JSONDecoder()
+                    let searchData = try decoder.decode(Result.self, from: data)
+                    
+                    DispatchQueue.main.sync {
+                        var albums: [Album] = []
+                        for album in searchData.results {
+                            if let collectionType = album.collectionType {
+                                if collectionType == "Album" {
+                                    albums.append(album)
+                                }
+                            }
+                        }
+                        a.albums = albums
+                        self.data.append(a)
+                        self.tableView.reloadData()
+                    }
+                } catch let err {
+                    print("Err", err)
+                }
+                }.resume()
+        }
     }
 }

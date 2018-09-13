@@ -13,7 +13,7 @@ class ArtistSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var artistNames: [String] = []
-    var tracks: [Track] = []
+    var albums: [Album] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +38,12 @@ class ArtistSearchViewController: UIViewController {
 extension ArtistSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked( _ searchBar: UISearchBar) {
         self.artistNames.removeAll()
-        self.tracks.removeAll()
+        self.albums.removeAll()
         self.tableView.reloadData()
         if let searchText = searchBar.text {
             let search = searchText.lowercased().replacingOccurrences(of: " ", with: "+")
             
-            guard let searchUrl = URL(string: "https://itunes.apple.com/search?term=" + search) else { return }
+            guard let searchUrl = URL(string: "https://itunes.apple.com/search?term=" + search + "&entity=album") else { return }
             
             URLSession.shared.dataTask(with: searchUrl) { (data, response, error)
                 in
@@ -51,16 +51,13 @@ extension ArtistSearchViewController: UISearchBarDelegate {
                 guard let data = data else { return }
                 do {
                     let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .iso8601
                     let searchData = try decoder.decode(Result.self, from: data)
                     
                     DispatchQueue.main.sync {
-                        for track in searchData.results {
-                            self.tracks.append(track)
-                            if let artist = track.artistName {
-                                if !self.artistNames.contains(artist) {
-                                    self.artistNames.append(artist)
-                                }
+                        for album in searchData.results {
+                            self.albums.append(album)
+                            if !self.artistNames.contains(album.artistName!) {
+                                self.artistNames.append(album.artistName!)
                             }
                         }
                         self.tableView.reloadData()
@@ -90,9 +87,10 @@ extension ArtistSearchViewController: UITableViewDataSource, UITableViewDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "searchToDetail", let destination = segue.destination as? ArtistDetailViewController {
             let currentTableViewCell = sender as! SearchTableViewCell
-            destination.artistName = currentTableViewCell.title.text!
+            let name = currentTableViewCell.title.text!
+            destination.artistName = name
             destination.artistNames = self.artistNames
-            destination.tracks = self.tracks
+            destination.albums = self.albums.filter{$0.artistName == name}
         }
     }
 }

@@ -12,8 +12,7 @@ class ArtistDetailViewController: UIViewController {
     @IBOutlet weak var albumCollectionView: UICollectionView!
     
     var artistNames: [String] = []
-    var tracks: [Track] = []
-    var collections: [Track] = []
+    var albums: [Album] = []
     var artistName: String = ""
     var artist: Artist?
     
@@ -23,15 +22,7 @@ class ArtistDetailViewController: UIViewController {
         albumCollectionView.delegate = self
         albumCollectionView.dataSource = self
         
-        for track in tracks {
-            if !collections.contains(where: {$0.collectionName == track.collectionName}) {
-                if track.artistName == artistName {
-                    collections.append(track)
-                }
-            }
-        }
-        
-        artist = Artist(artistName: artistName, collections: collections)
+        artist = Artist(artistName: artistName, albums: albums)
         self.title = artistName
     }
 
@@ -55,13 +46,13 @@ class ArtistDetailViewController: UIViewController {
 
 extension ArtistDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collections.count
+        return albums.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! AlbumCollectionViewCell
-        let track = collections[indexPath.row]
-        if let artworkUrl = track.artworkUrl100 {
+        let album = albums[indexPath.row]
+        if let artworkUrl = album.artworkUrl100 {
             if let imageUrl = URL(string: artworkUrl) {
                 URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                     if let data = data {
@@ -74,8 +65,8 @@ extension ArtistDetailViewController: UICollectionViewDelegate, UICollectionView
             }
         }
         
-        cell.artistNameLabel.text = track.artistName
-        cell.collectionNameLabel.text = track.collectionName
+        cell.artistNameLabel.text = album.artistName
+        cell.collectionNameLabel.text = album.collectionName
         
         
         return cell

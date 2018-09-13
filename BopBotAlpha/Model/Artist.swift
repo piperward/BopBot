@@ -7,37 +7,29 @@
 //
 
 import Foundation
+import Firebase
 
 struct Artist {
     let artistName: String
-    let collectionNames: [String]?
-    let tracksFromSeparateCollections: [Track]?
+    var albums: [Album]?
     
-    init(artistName: String, collections tracks: [Track]? = nil) {
+    init(artistName: String, albums: [Album]? = nil) {
         self.artistName = artistName
-        if tracks != nil {
-            self.tracksFromSeparateCollections = tracks
-            self.collectionNames = []
-            for track in tracks! {
-                if let collectionName = track.collectionName {
-                    collectionNames?.append(collectionName)
-                }
-            }
-        }
-        else {
-            tracksFromSeparateCollections = []
-            collectionNames = []
-        }
+        self.albums = albums
     }
     
-    func latestRelease() -> Track? {
-        if let tracks = tracksFromSeparateCollections {
-            var latest = tracks.first
-            for (index, _) in tracks.enumerated() {
-                if (index+1) < tracks.count {
-                    let nextTrack = tracks[index+1]
-                    if nextTrack.releaseDate! > latest!.releaseDate! {
-                        latest = nextTrack
+    func latestRelease() -> Album? {
+        if let tempAlbums = self.albums {
+            var latest = tempAlbums.first
+            for (index, _) in tempAlbums.enumerated() {
+                if (index+1) < tempAlbums.count {
+                    let nextCollection = tempAlbums[index+1]
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                    let nextAlbumReleaseDate = formatter.date(from: nextCollection.releaseDate!)
+                    let latestReleaseDate = formatter.date(from: (latest?.releaseDate!)!)
+                    if nextAlbumReleaseDate! > latestReleaseDate! {
+                        latest = nextCollection
                     }
                 }
             }
