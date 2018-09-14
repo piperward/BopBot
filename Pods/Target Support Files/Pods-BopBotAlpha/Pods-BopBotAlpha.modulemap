@@ -1,0 +1,6 @@
+framework module Pods_BopBotAlpha {
+  umbrella header "Pods-BopBotAlpha-umbrella.h"
+
+  export *
+  module * { export * }
+}
