@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4DCBE0771EA71272E99C3B7D /* Pods_BopBotAlpha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A346DA501372098E4D09CB3 /* Pods_BopBotAlpha.framework */; };
 		860B952E211675BF00A29696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 860B952D211675BE00A29696 /* GoogleService-Info.plist */; };
 		86175DD4214A280400497E19 /* FirebaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86175DD3214A280400497E19 /* FirebaseApi.swift */; };
 		8618523321017D87005997AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618523221017D87005997AD /* AppDelegate.swift */; };
@@ -32,7 +31,7 @@
 		3EF1EAACB90120D0F8F0F560 /* Pods-BopBotAlpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBotAlpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha.debug.xcconfig"; sourceTree = "<group>"; };
 		860B952D211675BE00A29696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86175DD3214A280400497E19 /* FirebaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseApi.swift; sourceTree = "<group>"; };
-		8618522F21017D87005997AD /* BopBotAlpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BopBotAlpha.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8618522F21017D87005997AD /* BopBot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BopBot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8618523221017D87005997AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8618523921017D87005997AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8618523B21017D8A005997AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +49,6 @@
 		86ABB425210953D100658F21 /* HeaderArtistCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderArtistCollectionReusableView.swift; sourceTree = "<group>"; };
 		86ABB42721096D2A00658F21 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		86ABB4292109738E00658F21 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
-		9A346DA501372098E4D09CB3 /* Pods_BopBotAlpha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BopBotAlpha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3CFF5543467DF9C6602C880 /* Pods-BopBotAlpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBotAlpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DCBE0771EA71272E99C3B7D /* Pods_BopBotAlpha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +66,6 @@
 		35089B62F0BE93DB604B976F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A346DA501372098E4D09CB3 /* Pods_BopBotAlpha.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,7 +73,7 @@
 		8618522621017D87005997AD = {
 			isa = PBXGroup;
 			children = (
-				8618523121017D87005997AD /* BopBotAlpha */,
+				8618523121017D87005997AD /* BopBot */,
 				8618523021017D87005997AD /* Products */,
 				B56119BF3F933F2F73A20AE2 /* Pods */,
 				35089B62F0BE93DB604B976F /* Frameworks */,
@@ -87,12 +83,12 @@
 		8618523021017D87005997AD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8618522F21017D87005997AD /* BopBotAlpha.app */,
+				8618522F21017D87005997AD /* BopBot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8618523121017D87005997AD /* BopBotAlpha */ = {
+		8618523121017D87005997AD /* BopBot */ = {
 			isa = PBXGroup;
 			children = (
 				866B533E2109EC0D000C058E /* ViewControllers */,
@@ -107,7 +103,7 @@
 				8618524021017D8A005997AD /* Info.plist */,
 				860B952D211675BE00A29696 /* GoogleService-Info.plist */,
 			);
-			path = BopBotAlpha;
+			path = BopBot;
 			sourceTree = "<group>";
 		};
 		866B533E2109EC0D000C058E /* ViewControllers */ = {
@@ -154,9 +150,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8618522E21017D87005997AD /* BopBotAlpha */ = {
+		8618522E21017D87005997AD /* BopBot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8618524321017D8A005997AD /* Build configuration list for PBXNativeTarget "BopBotAlpha" */;
+			buildConfigurationList = 8618524321017D8A005997AD /* Build configuration list for PBXNativeTarget "BopBot" */;
 			buildPhases = (
 				757E579111122E5960E16B28 /* [CP] Check Pods Manifest.lock */,
 				8618522B21017D87005997AD /* Sources */,
@@ -168,9 +164,9 @@
 			);
 			dependencies = (
 			);
-			name = BopBotAlpha;
+			name = BopBot;
 			productName = BopBotAlpha;
-			productReference = 8618522F21017D87005997AD /* BopBotAlpha.app */;
+			productReference = 8618522F21017D87005997AD /* BopBot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8618522A21017D87005997AD /* Build configuration list for PBXProject "BopBotAlpha" */;
+			buildConfigurationList = 8618522A21017D87005997AD /* Build configuration list for PBXProject "BopBot" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -201,7 +197,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8618522E21017D87005997AD /* BopBotAlpha */,
+				8618522E21017D87005997AD /* BopBot */,
 			);
 		};
 /* End PBXProject section */
@@ -430,12 +426,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ES2M475LSA;
-				INFOPLIST_FILE = BopBotAlpha/Info.plist;
+				INFOPLIST_FILE = BopBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = utcs.BopBotAlpha;
+				PRODUCT_BUNDLE_IDENTIFIER = utcs.BopBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -449,12 +445,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ES2M475LSA;
-				INFOPLIST_FILE = BopBotAlpha/Info.plist;
+				INFOPLIST_FILE = BopBot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = utcs.BopBotAlpha;
+				PRODUCT_BUNDLE_IDENTIFIER = utcs.BopBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -464,7 +460,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8618522A21017D87005997AD /* Build configuration list for PBXProject "BopBotAlpha" */ = {
+		8618522A21017D87005997AD /* Build configuration list for PBXProject "BopBot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8618524121017D8A005997AD /* Debug */,
@@ -473,7 +469,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8618524321017D8A005997AD /* Build configuration list for PBXNativeTarget "BopBotAlpha" */ = {
+		8618524321017D8A005997AD /* Build configuration list for PBXNativeTarget "BopBot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8618524421017D8A005997AD /* Debug */,

@@ -48,6 +48,38 @@ struct Api {
             completion(artists)
         })
     }
+    
+    static func followAction(_ artist: Artist) {
+        if let album = artist.latestRelease() {
+            let artistId = album.artistId!
+            
+            guard let lookUpUrl = URL(string: "https://itunes.apple.com/lookup?id=" + "\(artistId)") else { return }
+            
+            URLSession.shared.dataTask(with: lookUpUrl) { (data, response, error)
+                in
+                
+                guard let data = data else { return }
+                do {
+                    let decoder = JSONDecoder()
+                    let searchData = try decoder.decode(ArtistLookupResult.self, from: data)
+                    
+                    DispatchQueue.main.sync {
+                        let artist = searchData.results[0]
+                        let artistRef = self.followingRef.child(artist.artistName.lowercased())
+                        
+                        artistRef.setValue(artist.toAnyObject())
+                    }
+                } catch let err {
+                    print("Err", err)
+                }
+                }.resume()
+        }
+    }
+    
+    static func unfollowAction(_ artist: Artist) {
+        let artistRef = self.followingRef.child(artist.artistName.lowercased())
+        artistRef.removeValue()
+    }
 }
 
 
