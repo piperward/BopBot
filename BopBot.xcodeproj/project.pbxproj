@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		505F1FF2BD679488CD02CAED /* Pods_BopBot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7FEEC54BDA4BF97084C037 /* Pods_BopBot.framework */; };
 		860B952E211675BF00A29696 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 860B952D211675BE00A29696 /* GoogleService-Info.plist */; };
 		86175DD4214A280400497E19 /* FirebaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86175DD3214A280400497E19 /* FirebaseApi.swift */; };
 		8618523321017D87005997AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8618523221017D87005997AD /* AppDelegate.swift */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0067480B9CA952E019CE67D7 /* Pods-BopBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BopBot/Pods-BopBot.debug.xcconfig"; sourceTree = "<group>"; };
+		0A7FEEC54BDA4BF97084C037 /* Pods_BopBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BopBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF1EAACB90120D0F8F0F560 /* Pods-BopBotAlpha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBotAlpha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha.debug.xcconfig"; sourceTree = "<group>"; };
 		860B952D211675BE00A29696 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86175DD3214A280400497E19 /* FirebaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseApi.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		86ABB42721096D2A00658F21 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		86ABB4292109738E00658F21 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		B3CFF5543467DF9C6602C880 /* Pods-BopBotAlpha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBotAlpha.release.xcconfig"; path = "Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha.release.xcconfig"; sourceTree = "<group>"; };
+		F57DD8C7EAFDBAB30EE41204 /* Pods-BopBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BopBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-BopBot/Pods-BopBot.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				505F1FF2BD679488CD02CAED /* Pods_BopBot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 		35089B62F0BE93DB604B976F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7FEEC54BDA4BF97084C037 /* Pods_BopBot.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,6 +149,8 @@
 			children = (
 				3EF1EAACB90120D0F8F0F560 /* Pods-BopBotAlpha.debug.xcconfig */,
 				B3CFF5543467DF9C6602C880 /* Pods-BopBotAlpha.release.xcconfig */,
+				0067480B9CA952E019CE67D7 /* Pods-BopBot.debug.xcconfig */,
+				F57DD8C7EAFDBAB30EE41204 /* Pods-BopBot.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -223,7 +231,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-BopBot/Pods-BopBot-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -238,7 +246,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BopBotAlpha/Pods-BopBotAlpha-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BopBot/Pods-BopBot-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		757E579111122E5960E16B28 /* [CP] Check Pods Manifest.lock */ = {
@@ -252,7 +260,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BopBotAlpha-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BopBot-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -421,16 +429,13 @@
 		};
 		8618524421017D8A005997AD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EF1EAACB90120D0F8F0F560 /* Pods-BopBotAlpha.debug.xcconfig */;
+			baseConfigurationReference = 0067480B9CA952E019CE67D7 /* Pods-BopBot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ES2M475LSA;
 				INFOPLIST_FILE = BopBot/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utcs.BopBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -440,16 +445,13 @@
 		};
 		8618524521017D8A005997AD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3CFF5543467DF9C6602C880 /* Pods-BopBotAlpha.release.xcconfig */;
+			baseConfigurationReference = F57DD8C7EAFDBAB30EE41204 /* Pods-BopBot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ES2M475LSA;
 				INFOPLIST_FILE = BopBot/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = utcs.BopBot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

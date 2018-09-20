@@ -23,6 +23,7 @@ class ArtistSearchViewController: UIViewController {
         searchBar.delegate = self
         
         tableView.reloadData()
+        tableView.keyboardDismissMode = .onDrag
         
         self.title = "Search"
     }
@@ -31,8 +32,6 @@ class ArtistSearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
 extension ArtistSearchViewController: UISearchBarDelegate {

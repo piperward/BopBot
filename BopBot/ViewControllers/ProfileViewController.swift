@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController {
         Api.observeFollowingNames() { (artistNames) in
             self.data = artistNames
             self.tableView.reloadData()
+            self.followingCountLabel.text = "\(self.data.count)"
         }
         
         tableView.delegate = self

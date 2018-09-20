@@ -19,13 +19,9 @@ class User {
     }
     
     static func unfollow(_ artist: Artist) {
-        following.removeValue(forKey: artist.artistName)
+        following.removeValue(forKey: artist.artistName.lowercased())
         
-        Api.followAction(artist)
-    }
-    
-    static func unfollow(_ artist: String) {
-        following.removeValue(forKey: artist)
+        Api.unfollowAction(artist)
     }
     
     static func isFollowing(_ artist: Artist) -> Bool {

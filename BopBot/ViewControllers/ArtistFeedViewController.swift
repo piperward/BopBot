@@ -14,6 +14,8 @@ class ArtistFeedViewController: UIViewController {
     
     fileprivate var data: [CodableArtist] = []
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,9 +23,17 @@ class ArtistFeedViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        Api.observeFollowingArtists() { (artists) in
-            self.updateAlbums(artists: artists)
+        updateAlbums(self.title)
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
         }
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(updateAlbums(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +43,15 @@ class ArtistFeedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc private func updateAlbums(_: Any) {
+        self.data.removeAll()
+        Api.observeFollowingArtists() { (artists) in
+            self.updateAlbums(artists: artists)
+        }
+        self.tableView.reloadData()
+        self.refreshControl.endRefreshing()
     }
     
 
@@ -89,9 +108,16 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-
-        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let current = data[indexPath.row]
+            self.data.remove(at: indexPath.row)
+            User.unfollow(Artist(artistName: current.artistName))
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 
@@ -130,3 +156,4 @@ extension ArtistFeedViewController {
         }
     }
 }
+
