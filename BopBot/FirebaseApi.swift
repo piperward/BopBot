@@ -64,13 +64,16 @@ struct Api {
                     let searchData = try decoder.decode(ArtistLookupResult.self, from: data)
                     
                     DispatchQueue.main.sync {
-                        let artist = searchData.results[0]
+                        var artist = searchData.results[0]
+                        artist.artworkUrl100 = album.artworkUrl100
+                        artist.albumName = album.collectionName
+                        artist.releaseDate = album.releaseDate
                         let artistRef = self.followingRef.child(artist.artistName.lowercased())
                         
                         artistRef.setValue(artist.toAnyObject())
                     }
                 } catch let err {
-                    print("Err", err)
+                    print("[Error FirebaseApi.swift]", err)
                 }
                 }.resume()
         }

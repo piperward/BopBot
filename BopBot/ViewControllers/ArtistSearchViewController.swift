@@ -62,7 +62,7 @@ extension ArtistSearchViewController: UISearchBarDelegate {
                         self.tableView.reloadData()
                     }
                 } catch let err {
-                    print("Err", err)
+                    print("[Error: ArtistSearchViewController]", err)
                 }
                 }.resume()
         }

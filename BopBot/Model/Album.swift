@@ -19,7 +19,7 @@ struct Result: Codable {
 }
 
 struct Album: Codable {
-    let artistId: Int?
+    let artistId: String?
     let collectionId: Int?
     let artistName: String?
     let collectionName: String?

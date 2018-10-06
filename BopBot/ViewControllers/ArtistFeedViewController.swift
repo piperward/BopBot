@@ -75,11 +75,30 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "albumCell", for: indexPath) as! AlbumTableViewCell
         let artist = data[indexPath.row]
-        if let latestRelease: Album = artist.latestRelease() {
-            cell.albumNameLabel.text = latestRelease.collectionName
-            cell.artistNameLabel.text = latestRelease.artistName
-            let releaseDate = latestRelease.releaseDate
-            
+        //Set artist name label
+        cell.artistNameLabel.text = artist.artistName
+        
+        //Set album name label
+        if let albumName = artist.albumName {
+            cell.albumNameLabel.text = albumName
+        }
+        
+        //Fetch and load album artwork via url
+        if let artworkUrl = artist.artworkUrl100 {
+            if let imageUrl = URL(string: artworkUrl) {
+                URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                    if let data = data {
+                        let image = UIImage(data: data)
+                        DispatchQueue.main.async {
+                            cell.artworkImageView.image = image
+                        }
+                    }
+                    }.resume()
+            }
+        }
+        
+        //Format release date and set release date label
+        if let releaseDate = artist.releaseDate {
             //DateFormatter used to properly display release date
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -87,27 +106,15 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "MMM dd, yyyy"
             if releaseDate != nil {
-                if let date = dateFormatterGet.date(from: releaseDate!){
+                if let date = dateFormatterGet.date(from: releaseDate){
                     cell.dateLabel.text = dateFormatterPrint.string(from: date)
                 }
                 else {
                     print("There was an error decoding the string")
                 }
             }
-            
-            if let artworkUrl = latestRelease.artworkUrl100 {
-                if let imageUrl = URL(string: artworkUrl) {
-                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
-                        if let data = data {
-                            let image = UIImage(data: data)
-                            DispatchQueue.main.async {
-                                cell.artworkImageView.image = image
-                            }
-                        }
-                        }.resume()
-                }
-            }
         }
+        
         return cell
     }
     
@@ -124,35 +131,8 @@ extension ArtistFeedViewController: UITableViewDelegate, UITableViewDataSource {
 extension ArtistFeedViewController {
     fileprivate func updateAlbums(artists: [CodableArtist]) {
         for artist in artists {
-            var a = artist
-            
-            guard let lookUpUrl = URL(string: "https://itunes.apple.com/lookup?amgArtistId=" + "\(a.amgArtistId)" + "&entity=album") else { return }
-            
-            URLSession.shared.dataTask(with: lookUpUrl) { (data, response, error)
-                in
-                
-                guard let data = data else { return }
-                do {
-                    let decoder = JSONDecoder()
-                    let searchData = try decoder.decode(Result.self, from: data)
-                    
-                    DispatchQueue.main.sync {
-                        var albums: [Album] = []
-                        for album in searchData.results {
-                            if let collectionType = album.collectionType {
-                                if collectionType == "Album" {
-                                    albums.append(album)
-                                }
-                            }
-                        }
-                        a.albums = albums
-                        self.data.append(a)
-                        self.tableView.reloadData()
-                    }
-                } catch let err {
-                    print("Err", err)
-                }
-                }.resume()
+            data.append(artist)
+            self.tableView.reloadData()
         }
     }
 }
